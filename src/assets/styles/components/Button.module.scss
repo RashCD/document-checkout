@@ -1,0 +1,28 @@
+.button {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  background-color: var(--secondary-brand-color);
+  width: 90px;
+  height: 30px;
+  cursor: pointer;
+  font-weight: bold;
+
+  &:active {
+    transform: translateY(1px);
+    filter: saturate(150%);
+  }
+
+  &:hover {
+    color: var(--secondary-brand-color);
+    border-color: currentColor;
+    background-color: var(--white);
+  }
+
+  &:focus {
+    outline: solid transparent;
+    box-shadow: 0 0 0 1px var(--white), 0 0 0 3px var(--focus-color);
+  }
+}

@@ -1,13 +1,16 @@
 import { RouteComponentProps } from '@reach/router';
+import ProductList from '../components/ProductList';
+import Styles from '../assets/styles/views/LandingPage.module.scss';
 
 const LandingPage = (props: RouteComponentProps) => {
-  var a = 'test';
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>test {a}</p>
+    <div className={Styles.app}>
+      <header className={Styles.appHeader}>
+        <h1>{process.env.REACT_APP_WEBSITE_NAME}</h1>
       </header>
+      <main className={Styles.appMain}>
+        <ProductList />
+      </main>
     </div>
   );
 };
