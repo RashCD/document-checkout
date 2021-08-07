@@ -1,11 +1,11 @@
 import { Suspense } from 'react';
-import './assets/styles/global.css';
+import './assets/styles/global.scss';
 import Routes from './Routes';
 
 function App() {
   return (
     <Suspense fallback={<p>Loading...</p>}>
-      <Routes/>
+      <Routes />
     </Suspense>
   );
 }
