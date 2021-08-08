@@ -1,11 +1,14 @@
 import { Suspense } from 'react';
 import './assets/styles/global.scss';
+import { CartProvider } from './context/CartContext';
 import Routes from './Routes';
 
 function App() {
   return (
     <Suspense fallback={<p>Loading...</p>}>
-      <Routes />
+      <CartProvider>
+        <Routes />
+      </CartProvider>
     </Suspense>
   );
 }

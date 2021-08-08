@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Styles from '../assets/styles/components/ProductList.module.scss';
-import Cookie from '../util/cookie';
-import { COOKIE_NAME } from '../util/typeConstant';
+import { CartContext } from '../context/CartContext';
 import CTAButton from './CTAButton';
 
-type productDetailsTypes = {
+export type productDetailsTypes = {
   productID: string;
   productName: string;
   price: string;
@@ -38,11 +37,9 @@ const PRODUCT_DETAILS: productDetailsTypes[] = [
   },
 ];
 
-const addToCartButton = (productID: string) => {
-  return Cookie.append(COOKIE_NAME.PRODUCT_IDS, { productID });
-};
-
 const ProductList = () => {
+  const { addProductToCart } = useContext(CartContext);
+
   return (
     <div className={Styles.productList}>
       {PRODUCT_DETAILS.map(({ productID, productName, currency, price }) => (
@@ -58,7 +55,7 @@ const ProductList = () => {
             </p>
           </div>
           <div className={Styles.productAction}>
-            <CTAButton onButtonClick={() => addToCartButton(productID)}>
+            <CTAButton onButtonClick={() => addProductToCart(productID)}>
               Add to Cart
             </CTAButton>
             <CTAButton onButtonClick={() => {}}>Buy Now</CTAButton>
