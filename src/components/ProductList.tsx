@@ -1,5 +1,6 @@
 import React from 'react';
 import Styles from '../assets/styles/components/ProductList.module.scss';
+import Cookie from '../util/cookie';
 import Button from './Button';
 
 type productDetailsTypes = {
@@ -36,6 +37,10 @@ const PRODUCT_DETAILS: productDetailsTypes[] = [
   },
 ];
 
+const addToCartButton = (productID: string) => {
+  return Cookie.append('productIds', { productID });
+};
+
 const ProductList = () => {
   return (
     <div className={Styles.productList}>
@@ -52,8 +57,10 @@ const ProductList = () => {
             </p>
           </div>
           <div className={Styles.productAction}>
-            <Button text="Add to Cart" onButtonClick={() => {}} />
-            <Button text="Buy Now" onButtonClick={() => {}} />
+            <Button onButtonClick={() => addToCartButton(productID)}>
+              Add to Cart
+            </Button>
+            <Button onButtonClick={() => {}}>Buy Now</Button>
           </div>
         </div>
       ))}

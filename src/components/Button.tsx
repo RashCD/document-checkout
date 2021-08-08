@@ -2,8 +2,8 @@ import React from 'react';
 import Styles from '../assets/styles/components/Button.module.scss';
 
 type buttonTypes = {
-  text: string;
   onButtonClick: (event: React.MouseEvent) => void;
+  children: React.ReactChild;
 };
 
 const Button = (props: buttonTypes) => {
@@ -13,7 +13,7 @@ const Button = (props: buttonTypes) => {
       className={Styles.button}
       onClick={props.onButtonClick}
     >
-      {props.text}
+      {props.children}
     </button>
   );
 };
