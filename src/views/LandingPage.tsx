@@ -6,7 +6,7 @@ import AppLayout from '../components/AppLayout';
 const LandingPage = (props: RouteComponentProps) => {
   return (
     <div className={Styles.app}>
-      <AppLayout />
+      <AppLayout title={process.env.REACT_APP_WEBSITE_NAME} />
       <main className={Styles.appMain}>
         <ProductList />
       </main>

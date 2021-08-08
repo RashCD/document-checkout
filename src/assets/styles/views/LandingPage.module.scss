@@ -5,18 +5,6 @@
   height: 100%;
 }
 
-.appHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-  background-color: var(--brand-color);
-  z-index: 1;
-  box-shadow: 0px 2px 7px 0px var(--gray);
-  padding: 0 10px;
-  color: var(--white);
-}
-
 .appMain {
   display: flex;
   flex-direction: column;
