@@ -1,16 +1,18 @@
 import React from 'react';
+import mergeClass, { ClassValue } from 'clsx';
 import Styles from '../assets/styles/components/Button.module.scss';
 
-type buttonTypes = {
+export type buttonTypes = {
   onButtonClick: (event: React.MouseEvent) => void;
-  children: React.ReactChild;
+  children?: React.ReactChild;
+  className?: ClassValue;
 };
 
 const Button = (props: buttonTypes) => {
   return (
     <button
       type="button"
-      className={Styles.button}
+      className={mergeClass(Styles.button, props.className)}
       onClick={props.onButtonClick}
     >
       {props.children}

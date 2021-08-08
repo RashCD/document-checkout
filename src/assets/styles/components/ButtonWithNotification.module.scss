@@ -1,0 +1,23 @@
+.buttonContainer {
+  position: relative;
+  margin-right: 10px;
+}
+
+.button {
+  background-color: transparent;
+}
+
+.circle {
+  position: absolute;
+  bottom: -5px;
+  right: 5px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: red;
+  z-index: 1;
+
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
