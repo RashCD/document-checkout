@@ -34,7 +34,7 @@ class Cookie {
     }
   }
 
-  static get(key: string, defaultValue: string) {
+  static get<T>(key: string, defaultValue: T) {
     return Cookies.get(key) || defaultValue;
   }
 
