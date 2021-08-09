@@ -5,13 +5,13 @@ import { COOKIE_NAME } from '../util/typeConstant';
 type productTypes = { productID: string };
 
 type cartContextTypes = {
-  cart: productTypes[];
+  carts: productTypes[];
   cartCount: number;
   addProductToCart: (id: string) => void;
 };
 
 const CartContext = React.createContext<cartContextTypes>({
-  cart: [],
+  carts: [],
   cartCount: 0,
   addProductToCart: () => {},
 });
@@ -22,22 +22,22 @@ const CartProvider = (props: { children: React.ReactChild }) => {
   const parseProductIds: productTypes[] | [] =
     typeof getProductIds === 'string' ? JSON.parse(getProductIds) : [];
 
-  const [cart, setCart] = useState<productTypes[]>(parseProductIds);
+  const [carts, setCarts] = useState<productTypes[]>(parseProductIds);
 
   const addProductToCart = (productID: string) => {
-    const isExist = cart.some((data) => data.productID === productID);
+    const isExist = carts.some((cart) => cart.productID === productID);
 
-    !isExist && setCart((cart) => [...cart, { productID }]);
+    !isExist && setCarts((cart) => [...cart, { productID }]);
   };
 
   useEffect(() => {
-    const stringifyCart = JSON.stringify(cart);
+    const stringifyCart = JSON.stringify(carts);
     Cookie.set(COOKIE_NAME.PRODUCT_IDS, stringifyCart);
-  }, [cart]);
+  }, [carts]);
 
   const implementation: cartContextTypes = {
-    cart,
-    cartCount: cart.length,
+    carts,
+    cartCount: carts.length,
     addProductToCart,
   };
 
