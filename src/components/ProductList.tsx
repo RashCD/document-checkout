@@ -10,33 +10,39 @@ const ProductList = () => {
 
   return (
     <div className={Styles.productList}>
-      {PRODUCT_DETAILS.map(({ productID, productName, currency, price }) => (
-        <div className={Styles.productContainer} key={productID}>
-          <img className={Styles.productImage} src="" alt="" />
-          <div className={Styles.productTitle}>
-            <p>{productName}</p>
+      {PRODUCT_DETAILS.map(
+        ({ productID, productName, currency, price, image }) => (
+          <div className={Styles.productContainer} key={productID}>
+            <img
+              className={Styles.productImage}
+              src={image.src}
+              alt={image.alt}
+            />
+            <div className={Styles.productTitle}>
+              <p>{productName}</p>
+            </div>
+            <div className={Styles.productPricing}>
+              <p>
+                {currency}
+                {price}
+              </p>
+            </div>
+            <div className={Styles.productAction}>
+              <CTAButton onButtonClick={() => addProductToCart(productID)}>
+                Add to Cart
+              </CTAButton>
+              <CTAButton
+                onButtonClick={() => {
+                  addProductToCart(productID);
+                  navigate('/checkout');
+                }}
+              >
+                Buy Now
+              </CTAButton>
+            </div>
           </div>
-          <div className={Styles.productPricing}>
-            <p>
-              {currency}
-              {price}
-            </p>
-          </div>
-          <div className={Styles.productAction}>
-            <CTAButton onButtonClick={() => addProductToCart(productID)}>
-              Add to Cart
-            </CTAButton>
-            <CTAButton
-              onButtonClick={() => {
-                addProductToCart(productID);
-                navigate('/checkout');
-              }}
-            >
-              Buy Now
-            </CTAButton>
-          </div>
-        </div>
-      ))}
+        )
+      )}
     </div>
   );
 };

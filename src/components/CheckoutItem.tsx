@@ -12,6 +12,10 @@ type checkoutItemTypes = {
   id?: string;
   title?: string;
   price?: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
   currency?: string;
   promo?: promoTypes | null;
 };
@@ -21,7 +25,7 @@ const priceFormat = new Intl.NumberFormat('en-US', {
 });
 
 const CheckoutItem = (props: checkoutItemTypes) => {
-  const { id, title, price, currency, promo } = props;
+  const { id, title, price, currency, promo, image } = props;
   const [count, setCount] = useState(0);
   const { deleteProduct } = useContext(CartContext);
   const totalPrice = priceFormat.format(count * Number(price));
@@ -44,7 +48,11 @@ const CheckoutItem = (props: checkoutItemTypes) => {
         </CTAButton>
       </div>
       <div className={Styles.checkoutMiddle}>
-        <img src="" alt="" className={Styles.checkoutImage} />
+        <img
+          src={image?.src}
+          alt={`${image?.alt}`}
+          className={Styles.checkoutImage}
+        />
         <div className={Styles.checkoutDetails}>
           <p className={Styles.checkoutTitle}>{title}</p>
           <p className={Styles.checkoutPrice}>
