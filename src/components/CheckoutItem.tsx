@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import CTAButton from '../components/CTAButton';
 import Button from '../components/Button';
 import Icon from '../components/Icon';
@@ -7,6 +7,7 @@ import MinusIcon from '../assets/icons/square-minus.svg';
 import Styles from '../assets/styles/components/CheckoutItem.module.scss';
 import { promoTypes } from '../util/product';
 import { CartContext } from '../context/CartContext';
+import { priceString } from '../util/format';
 
 type checkoutItemTypes = {
   id?: string;
@@ -20,18 +21,27 @@ type checkoutItemTypes = {
   promo?: promoTypes | null;
 };
 
-const priceFormat = new Intl.NumberFormat('en-US', {
-  minimumFractionDigits: 2,
-});
-
 const CheckoutItem = (props: checkoutItemTypes) => {
   const { id, title, price, currency, promo, image } = props;
   const [count, setCount] = useState(0);
-  const { deleteProduct } = useContext(CartContext);
-  const totalPrice = priceFormat.format(count * Number(price));
+  const { deleteProduct, setTotal } = useContext(CartContext);
+
+  const totalPrice = priceString.format(count * Number(price));
   const hasPromocode = !!promo?.code;
   const purchaseCountRequired = promo?.eligibility.purchaseItem || 0;
   const displayPurchaseCountEligibility = purchaseCountRequired - count;
+
+  useEffect(() => {
+    if (id) {
+      setTotal((prev) => ({
+        ...prev,
+        [id]: {
+          count,
+          price: totalPrice,
+        },
+      }));
+    }
+  }, [count, id, setTotal, totalPrice]);
 
   return (
     <div className={Styles.checkoutItem}>

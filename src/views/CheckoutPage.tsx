@@ -5,6 +5,7 @@ import Styles from '../assets/styles/views/CheckoutPage.module.scss';
 import CheckoutItem from '../components/CheckoutItem';
 import { CartContext } from '../context/CartContext';
 import { PRODUCT_DETAILS, PRODUCT_PROMOCODE } from '../util/product';
+import CheckoutFooter from '../components/CheckoutFooter';
 
 const CheckoutPage = (props: RouteComponentProps) => {
   const { carts } = useContext(CartContext);
@@ -39,6 +40,7 @@ const CheckoutPage = (props: RouteComponentProps) => {
           />
         ))}
       </main>
+      <CheckoutFooter />
     </div>
   );
 };
