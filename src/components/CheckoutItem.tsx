@@ -5,22 +5,34 @@ import Icon from '../components/Icon';
 import PlusIcon from '../assets/icons/square-plus.svg';
 import MinusIcon from '../assets/icons/square-minus.svg';
 import Styles from '../assets/styles/components/CheckoutItem.module.scss';
+import { promoTypes } from '../util/product';
 
 type checkoutItemTypes = {
   title?: string;
   price?: string;
+  currency?: string;
+  promo?: promoTypes | null;
 };
 
+const priceFormat = new Intl.NumberFormat('en-US', {
+  minimumFractionDigits: 2,
+});
+
 const CheckoutItem = (props: checkoutItemTypes) => {
-  const { title, price } = props;
+  const { title, price, currency, promo } = props;
   const [count, setCount] = useState(0);
-  const discountPrice = 0;
-  const promoDescription = 'This item got promo';
+  const totalPrice = priceFormat.format(count * Number(price));
+  const hasPromocode = promo?.code;
+  const purchaseCountRequired = promo?.eligibility.purchaseItem || 0;
+  const displayPurchaseCountEligibility = purchaseCountRequired - count;
 
   return (
     <div className={Styles.checkoutItem}>
       <div className={Styles.checkoutTop}>
-        <p className={Styles.checkoutIndicator}>This is an indicator</p>
+        <p className={Styles.checkoutIndicator}>
+          {hasPromocode &&
+            `Save ${currency}${promo?.eligibility.discount} with promocode`}
+        </p>
         <CTAButton className={Styles.checkoutDelete} onButtonClick={() => {}}>
           Delete
         </CTAButton>
@@ -29,7 +41,10 @@ const CheckoutItem = (props: checkoutItemTypes) => {
         <img src="" alt="" className={Styles.checkoutImage} />
         <div className={Styles.checkoutDetails}>
           <p className={Styles.checkoutTitle}>{title}</p>
-          <p className={Styles.checkoutPrice}>{price}</p>
+          <p className={Styles.checkoutPrice}>
+            {currency}
+            {price}
+          </p>
           <div className={Styles.checkoutCount}>
             <Button
               onButtonClick={() => setCount((count) => (count ? count - 1 : 0))}
@@ -51,11 +66,21 @@ const CheckoutItem = (props: checkoutItemTypes) => {
               />
             </Button>
           </div>
-          <div className={Styles.checkoutDiscount}>{discountPrice}</div>
+          <div className={Styles.checkoutDiscount}>
+            {currency}
+            {totalPrice}
+          </div>
         </div>
       </div>
       <div className={Styles.checkoutBottom}>
-        <p>{promoDescription}</p>
+        {hasPromocode && (
+          <p>
+            {displayPurchaseCountEligibility > 0
+              ? `Purchase another ${displayPurchaseCountEligibility} items to received
+            discount`
+              : 'You are eligible to receive discount. Click add promocode to apply to your purchase'}
+          </p>
+        )}
       </div>
     </div>
   );

@@ -4,6 +4,7 @@
   width: 100%;
   border: 1px solid;
   border-radius: 5px;
+  margin-bottom: 30px;
 
   > div {
     padding-left: 15px;
@@ -32,8 +33,11 @@
 }
 
 .checkoutImage {
-  width: 200px;
-  height: 150px;
+  width: auto;
+  height: auto;
+  aspect-ratio: 4/3;
+  max-width: 200px;
+  max-height: 150px;
 }
 
 .checkoutDetails {
@@ -54,7 +58,8 @@
 }
 
 .checkoutPrice {
-  @extend .checkoutTitle;
+  display: flex;
+  flex: 1;
 }
 
 .checkoutCount {
@@ -69,6 +74,8 @@
   flex: 1;
   justify-content: flex-end;
   align-items: center;
+  font-size: 23px;
+  font-weight: bold;
 }
 
 .checkoutBottom {
@@ -76,4 +83,8 @@
   border-top: 1px solid var(--gray);
   margin-top: 10px;
   padding: 10px 0;
+  height: 51px;
+
+  font-size: 14px;
+  font-weight: 400;
 }
