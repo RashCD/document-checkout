@@ -24,7 +24,7 @@ const CheckoutPage = (props: RouteComponentProps) => {
   );
 
   return (
-    <>
+    <div className="app">
       <AppLayout title="Checkout" />
       <main className={Styles.checkoutMain}>
         {selectedProductDetailsWithPromo.map((product) => (
@@ -33,12 +33,13 @@ const CheckoutPage = (props: RouteComponentProps) => {
             id={product.productID}
             title={product.productName}
             price={product.price}
+            image={product.image}
             currency={product.currency}
             promo={product.promo}
           />
         ))}
       </main>
-    </>
+    </div>
   );
 };
 

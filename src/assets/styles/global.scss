@@ -35,3 +35,11 @@ p {
 * {
   box-sizing: border-box;
 }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+  background-color: var(--background-color);
+}
