@@ -29,11 +29,12 @@ const CheckoutPage = (props: RouteComponentProps) => {
       <main className={Styles.checkoutMain}>
         {selectedProductDetailsWithPromo.map((product) => (
           <CheckoutItem
-            key={product?.productID}
-            title={product?.productName}
-            price={product?.price}
-            currency={product?.currency}
-            promo={product?.promo}
+            key={product.productID}
+            id={product.productID}
+            title={product.productName}
+            price={product.price}
+            currency={product.currency}
+            promo={product.promo}
           />
         ))}
       </main>

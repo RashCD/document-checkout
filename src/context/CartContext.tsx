@@ -8,12 +8,14 @@ type cartContextTypes = {
   carts: productTypes[];
   cartCount: number;
   addProductToCart: (id: string) => void;
+  deleteProduct: (id: string) => void;
 };
 
 const CartContext = React.createContext<cartContextTypes>({
   carts: [],
   cartCount: 0,
   addProductToCart: () => {},
+  deleteProduct: () => {},
 });
 
 const CartProvider = (props: { children: React.ReactChild }) => {
@@ -30,6 +32,12 @@ const CartProvider = (props: { children: React.ReactChild }) => {
     !isExist && setCarts((cart) => [...cart, { productID }]);
   };
 
+  const deleteProduct = (productID: string) => {
+    const filteredCarts = carts.filter((cart) => cart.productID !== productID);
+
+    setCarts(filteredCarts);
+  };
+
   useEffect(() => {
     const stringifyCart = JSON.stringify(carts);
     Cookie.set(COOKIE_NAME.PRODUCT_IDS, stringifyCart);
@@ -39,6 +47,7 @@ const CartProvider = (props: { children: React.ReactChild }) => {
     carts,
     cartCount: carts.length,
     addProductToCart,
+    deleteProduct,
   };
 
   return (

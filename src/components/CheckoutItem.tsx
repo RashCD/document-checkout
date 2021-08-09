@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import CTAButton from '../components/CTAButton';
 import Button from '../components/Button';
 import Icon from '../components/Icon';
@@ -6,8 +6,10 @@ import PlusIcon from '../assets/icons/square-plus.svg';
 import MinusIcon from '../assets/icons/square-minus.svg';
 import Styles from '../assets/styles/components/CheckoutItem.module.scss';
 import { promoTypes } from '../util/product';
+import { CartContext } from '../context/CartContext';
 
 type checkoutItemTypes = {
+  id?: string;
   title?: string;
   price?: string;
   currency?: string;
@@ -19,10 +21,11 @@ const priceFormat = new Intl.NumberFormat('en-US', {
 });
 
 const CheckoutItem = (props: checkoutItemTypes) => {
-  const { title, price, currency, promo } = props;
+  const { id, title, price, currency, promo } = props;
   const [count, setCount] = useState(0);
+  const { deleteProduct } = useContext(CartContext);
   const totalPrice = priceFormat.format(count * Number(price));
-  const hasPromocode = promo?.code;
+  const hasPromocode = !!promo?.code;
   const purchaseCountRequired = promo?.eligibility.purchaseItem || 0;
   const displayPurchaseCountEligibility = purchaseCountRequired - count;
 
@@ -33,7 +36,10 @@ const CheckoutItem = (props: checkoutItemTypes) => {
           {hasPromocode &&
             `Save ${currency}${promo?.eligibility.discount} with promocode`}
         </p>
-        <CTAButton className={Styles.checkoutDelete} onButtonClick={() => {}}>
+        <CTAButton
+          className={Styles.checkoutDelete}
+          onButtonClick={() => id && deleteProduct(id)}
+        >
           Delete
         </CTAButton>
       </div>

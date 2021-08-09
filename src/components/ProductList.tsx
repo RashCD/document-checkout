@@ -1,3 +1,4 @@
+import { navigate } from '@reach/router';
 import React, { useContext } from 'react';
 import Styles from '../assets/styles/components/ProductList.module.scss';
 import { CartContext } from '../context/CartContext';
@@ -25,7 +26,14 @@ const ProductList = () => {
             <CTAButton onButtonClick={() => addProductToCart(productID)}>
               Add to Cart
             </CTAButton>
-            <CTAButton onButtonClick={() => {}}>Buy Now</CTAButton>
+            <CTAButton
+              onButtonClick={() => {
+                addProductToCart(productID);
+                navigate('/checkout');
+              }}
+            >
+              Buy Now
+            </CTAButton>
           </div>
         </div>
       ))}
