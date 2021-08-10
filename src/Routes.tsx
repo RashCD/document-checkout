@@ -1,5 +1,5 @@
 import React from 'react';
-import { Router } from '@reach/router';
+import { Redirect, Router } from '@reach/router';
 import LandingPage from './views/LandingPage';
 import CheckoutPage from './views/CheckoutPage';
 import SuccessPage from './views/SuccessPage';
@@ -10,6 +10,7 @@ const Routes = () => {
       <LandingPage path="/" />
       <CheckoutPage path="/checkout" />
       <SuccessPage path="/success" />
+      <Redirect noThrow from="/*" to="/" />
     </Router>
   );
 };
