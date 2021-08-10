@@ -41,6 +41,11 @@ const CartProvider = (props: { children: React.ReactChild }) => {
     const filteredCarts = carts.filter((cart) => cart.productID !== productID);
 
     setCarts(filteredCarts);
+    setTotal((prev: { [key: string]: string }) => {
+      const state = JSON.parse(JSON.stringify(prev));
+      delete state[productID];
+      return state;
+    });
   };
 
   useEffect(() => {

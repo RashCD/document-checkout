@@ -72,7 +72,12 @@ const CheckoutItem = (props: checkoutItemTypes) => {
         </p>
         <CTAButton
           className={Styles.checkoutDelete}
-          onButtonClick={() => id && deleteProduct(id)}
+          onButtonClick={() => {
+            if (id) {
+              deleteProduct(id);
+              setCount(0);
+            }
+          }}
         >
           Delete
         </CTAButton>
