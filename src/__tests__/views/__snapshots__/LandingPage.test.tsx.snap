@@ -1,0 +1,200 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Landing page component test should match the snapshot 1`] = `
+<body>
+  <div>
+    <div
+      class="app"
+    >
+      <header
+        class="appHeader"
+      >
+        <button
+          class="button backButton"
+          type="button"
+        >
+          <span
+            class="iconContainer"
+            data-icon="true"
+            style="--icon-src: url(back.svg); --icon-color: var(--white); --icon-size: 30px;"
+          />
+          BACK
+        </button>
+        <h1
+          class="title"
+        >
+          Doc Shopper
+        </h1>
+      </header>
+      <main
+        class="appMain"
+      >
+        <div
+          class="productList"
+        >
+          <div
+            class="productContainer"
+          >
+            <img
+              alt="workflow image"
+              class="productImage"
+              src="./workflow.jpg"
+            />
+            <div
+              class="productTitle"
+            >
+              <p>
+                workflow
+              </p>
+            </div>
+            <div
+              class="productPricing"
+            >
+              <p>
+                $
+                199.99
+              </p>
+            </div>
+            <div
+              class="productAction"
+            >
+              <button
+                class="button cta"
+                type="button"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="button cta"
+                type="button"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+          <div
+            class="productContainer"
+          >
+            <img
+              alt="document generating image"
+              class="productImage"
+              src="./docgen.jpg"
+            />
+            <div
+              class="productTitle"
+            >
+              <p>
+                Document Generation
+              </p>
+            </div>
+            <div
+              class="productPricing"
+            >
+              <p>
+                $
+                9.99
+              </p>
+            </div>
+            <div
+              class="productAction"
+            >
+              <button
+                class="button cta"
+                type="button"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="button cta"
+                type="button"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+          <div
+            class="productContainer"
+          >
+            <img
+              alt="form image"
+              class="productImage"
+              src="./form.jpg"
+            />
+            <div
+              class="productTitle"
+            >
+              <p>
+                Form
+              </p>
+            </div>
+            <div
+              class="productPricing"
+            >
+              <p>
+                $
+                99.99
+              </p>
+            </div>
+            <div
+              class="productAction"
+            >
+              <button
+                class="button cta"
+                type="button"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="button cta"
+                type="button"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+          <div
+            class="productContainer"
+          >
+            <img
+              alt="taxation image"
+              class="productImage"
+              src="./tax.jpg"
+            />
+            <div
+              class="productTitle"
+            >
+              <p>
+                Taxation
+              </p>
+            </div>
+            <div
+              class="productPricing"
+            >
+              <p>
+                $
+                20.10
+              </p>
+            </div>
+            <div
+              class="productAction"
+            >
+              <button
+                class="button cta"
+                type="button"
+              >
+                Add to Cart
+              </button>
+              <button
+                class="button cta"
+                type="button"
+              >
+                Buy Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+`;
