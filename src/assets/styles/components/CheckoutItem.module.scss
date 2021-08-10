@@ -17,7 +17,6 @@
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid var(--gray);
-  margin-bottom: 10px;
   padding: 10px 0;
 }
 
@@ -30,6 +29,8 @@
 
 .checkoutMiddle {
   display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .checkoutImage {
@@ -63,6 +64,14 @@
   flex: 1;
 }
 
+.checkoutPriceDiscount {
+  display: flex;
+
+  > del {
+    color: var(--gray);
+  }
+}
+
 .checkoutCount {
   display: flex;
   flex: 1;
@@ -81,11 +90,40 @@
 
 .checkoutBottom {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-top: 1px solid var(--gray);
-  margin-top: 10px;
   padding: 10px 0;
   height: 51px;
 
   font-size: 14px;
   font-weight: 400;
+}
+
+.checkoutPromoText {
+  display: flex;
+  flex: 2;
+}
+
+.checkoutPromo {
+  display: flex;
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.checkoutPromoInput {
+  height: 30px;
+  width: 50%;
+}
+
+.checkoutPromoButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @extend .checkoutDelete;
+}
+
+.promoApplied {
+  color: green;
 }
