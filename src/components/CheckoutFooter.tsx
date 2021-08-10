@@ -1,3 +1,4 @@
+import { navigate } from '@reach/router';
 import React, { useContext } from 'react';
 import Styles from '../assets/styles/components/CheckoutFooter.module.scss';
 import { CartContext } from '../context/CartContext';
@@ -26,7 +27,17 @@ const CheckoutFooter = () => {
         {PREFERENCES.currency}
         {priceString.format(totalPrice)}
       </div>
-      <CTAButton className={Styles.checkout} onButtonClick={() => {}}>
+      <CTAButton
+        className={Styles.checkout}
+        onButtonClick={() =>
+          navigate('/success', {
+            state: {
+              currency: PREFERENCES.currency,
+              price: priceString.format(totalPrice),
+            },
+          })
+        }
+      >
         Checkout
       </CTAButton>
     </div>
