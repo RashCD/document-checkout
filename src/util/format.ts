@@ -1,6 +1,7 @@
 import { PREFERENCES } from './user';
 
 export const priceString = new Intl.NumberFormat(PREFERENCES.language, {
+  maximumFractionDigits: 2,
   minimumFractionDigits: 2,
 });
 
