@@ -98,6 +98,15 @@
 
   font-size: 14px;
   font-weight: 400;
+
+  @media (max-width: 500px) {
+    flex-direction: column;
+    height: auto;
+
+    > p {
+      margin-bottom: 10px;
+    }
+  }
 }
 
 .checkoutPromoText {
